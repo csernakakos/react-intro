@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel"></script>
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>my website</h1>
+
+    <div id="banner"></div>
+
+    <footer>
+        <p>footer</p>
+    </footer>
+    
+
+    <script type="text/babel">
+        const title = "My Title";
+        const address = "https://www.google.com";
+
+        const handleClick = (event) => {
+            console.log("clicked!")
+            console.log("event details: ", event)
+        }
+
+        // Create React component
+        const Banner = () => {
+            return (
+                <div className="banner">
+
+                    <p>Banneeerr</p>
+                    <p>{title.toUpperCase() + "!"}</p>
+                    <p>Today is {new Date().toDateString()}.</p>
+                    <p>Here's a random number: {Math.random() * 100}</p>
+                    <a href={address} target="blank">Search on Google</a>
+
+                    <hr/>
+                    <button onClick={handleClick}>On click, fire the HandleClick function</button>
+                    <button onClick={() => {console.log("arrowfunc fires on click")}}></button>
+                </div>
+            )
+        }
+
+        // Render React component into the DOM
+        ReactDOM.render(<Banner/>, document.getElementById("banner"));
+    </script>
+</body>
+</html>
