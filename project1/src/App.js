@@ -1,5 +1,5 @@
 import './App.css';
-// Import useState from React library:
+import Title from "./components/Title";
 import { useState } from "react"; 
 
 function App() {
@@ -21,9 +21,13 @@ function App() {
     console.log(id);
   }
 
+  const version = process.env.REACT_APP_DOC_VERSION;
+  const title = "MyTitle"
+
   return (
     <div className="App">
-
+        <Title version={version} title={title} />
+        
         {showEvents && (<div>
           <button onClick={() => {setShowEvents(false)}}>hide events</button>
         </div>)}
@@ -32,7 +36,6 @@ function App() {
           <button onClick={() => {setShowEvents(true)}}>show events</button>
         </div>)}
         
-        {/* If left-hand expression is true, run the right-hand expression: */}
         {showEvents && events.map((e, i) => (
           <div key={e.id}>
             <h2>{i}: {e.title}</h2>
