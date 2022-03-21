@@ -1,6 +1,7 @@
 import './App.css';
 import Title from "./components/Title";
 import Modal from "./components/Modal";
+import Clock from "./components/Clock";
 import EventList from "./components/EventList";
 import { useState } from "react"; 
 
@@ -38,6 +39,8 @@ function App() {
   return (
     <div className="App">
 
+      <Clock name={"Akos"} />
+
       <button onClick={() => setShowModal(true)}>Show Modal</button>
 
       {showModal && <Modal handleClose={handleClose}>
@@ -55,14 +58,7 @@ function App() {
           <button onClick={() => {setShowEvents(true)}}>show events</button>
         </div>)}
         
-        {/* {showEvents && events.map((e, i) => (
-          <div key={e.id}>
-            <h2>{i}: {e.title}</h2>
-            <button onClick={() => {handleClick(e.id)}}>delete event</button>
-          </div>
-      ))} */}
-
-        {showEvents && <EventList events={events}/>}
+        {showEvents && <EventList events={events} handleClick={handleClick}/>}
     </div>
   );
 }

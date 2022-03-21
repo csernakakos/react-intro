@@ -9,7 +9,7 @@ export default function Modal({handleClose, children}) {
         <div className="modal">
             {children}
 
-            <button onClick={() => handleClose()}>OK</button>
+            <button onClick={handleClose}>OK</button>
         </div>
     </div>
 //   ), document.body
