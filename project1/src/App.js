@@ -43,7 +43,7 @@ function App() {
 
       <button onClick={() => setShowModal(true)}>Show Modal</button>
 
-      {showModal && <Modal handleClose={handleClose}>
+      {showModal && <Modal isSalesModal={false} handleClose={handleClose}>
             <h2>Cookie policy</h2>
             <p>By visiting our website, you accept our Cookie policy and Privacy policy.</p>
       </Modal>}

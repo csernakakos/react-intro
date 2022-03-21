@@ -1,0 +1,18 @@
+.modularizedCard {
+    border: 1px solid #eee;
+    box-shadow: 4px 4px 5px rgba(0,0,0,0.5);
+    padding: 10px;
+    max-width: 400px;
+    margin: 20px auto;
+    border-radius: 4px;
+}
+
+/* NOT GOOD, will be scoped globally: */
+button {
+    background: #555;
+}
+
+/* BETTER! Scoped to the component: */
+.modularizedCard button {
+    background: #555;
+}
