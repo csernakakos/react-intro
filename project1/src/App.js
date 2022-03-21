@@ -1,9 +1,11 @@
 import './App.css';
 import Title from "./components/Title";
+import Modal from "./components/Modal";
 import { useState } from "react"; 
 
 function App() {
 
+  const [showModal, setShowModal] = useState(true);
   const [showEvents, setShowEvents] = useState(true);
   const [events, setEvents] = useState([
     {title: "text1", id: 1},
@@ -21,11 +23,21 @@ function App() {
     console.log(id);
   }
 
+  console.log(showModal);
+  const handleClose = () => {
+    setShowModal(false);
+  }
+
   const version = process.env.REACT_APP_DOC_VERSION;
   const title = "MyTitle"
 
   return (
     <div className="App">
+      {showModal && <Modal handleClose={handleClose}>
+            <h2>Cookie policy</h2>
+            <p>By visiting our website, you accept our Cookie policy and Privacy policy.</p>
+      </Modal>}
+      
         <Title version={version} title={title} />
         
         {showEvents && (<div>
