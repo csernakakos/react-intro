@@ -2,12 +2,12 @@ import React from 'react';
 // import ReactDOM from "react-dom";
 import "./Modal.css";
 
-export default function Modal({handleClose, children, isSalesModal}) {
+export default function Modal({children}) {
 //   return ReactDOM.createPortal((
 
     let backgroundColor = "palevioletred";
     let OEM = process.env.REACT_APP_OEM;
-    OEM = "andr";
+    OEM = "";
 
     switch(OEM) {
         case "mil":
@@ -20,10 +20,9 @@ export default function Modal({handleClose, children, isSalesModal}) {
             backgroundColor = "#3AD17D"
             break;
         default:
-            backgroundColor = "pink";
+            backgroundColor = "#f5efef";
     }
 
- 
     
     function getVersion() {
         let version = parseInt(process.env.REACT_APP_DOC_VERSION);
@@ -48,7 +47,7 @@ export default function Modal({handleClose, children, isSalesModal}) {
         }}>
             {children}
 
-            <button className={[getVersion(), "class2", "class3"].join(" ")} onClick={handleClose}>OK</button>
+            {/* <button className={[getVersion(), "class2", "class3"].join(" ")} onClick={handleClose}>OK</button> */}
         </div>
     </div>
 //   ), document.body

@@ -1,0 +1,33 @@
+.new-event-form label,
+.new-event-form input {
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 10px auto;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 1.2em;
+}
+
+.new-event-form p {
+    text-align: left;
+}
+
+.new-event-form button {
+    display: block;
+}
+
+.new-event-form .reset-form {
+    display: inline-block;
+    font-weight: bolder;
+    color: rgb(228, 48, 48);
+    cursor: pointer;
+    padding: 10px 20px;
+    border: 1px solid rgb(228, 48, 48);
+    transition: all 0.2s ease-in-out;
+    border-radius: 4px;
+}
+
+.new-event-form .reset-form:hover {
+    background: rgba(228, 48, 48,0.2)
+}
