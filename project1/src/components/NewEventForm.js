@@ -1,11 +1,17 @@
 import "./NewEventForm.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
 export default function NewEventForm({addEvent}) {
 
     const [eventName, setEventName] = useState("");
     const [eventDate, setEventDate] = useState("");
+    const [location, setLocation] = useState("London");
+
+    // useRef:
+    // const title = useRef();
+    // const date = useRef();
+
 
     // Instead of the below, let's handleChange directly on 		the individual input:
     // const handleChange = (e) => {
@@ -18,15 +24,22 @@ export default function NewEventForm({addEvent}) {
     const resetForm = () => {
         setEventName("");
         setEventDate("");
+        setLocation("London");
+
+        // title.current.value = "";
+        // date.current.value = "";
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("CLICKED SUBMIT");
+        // console.log(title.current.value, date.current.value);
 
         const event = {
             title: eventName,
             date: eventDate,
+            location,
+            // title: title.current.value,
+            // date: date.current.value,
             id: uuidv4(),
         };
 
@@ -41,6 +54,7 @@ export default function NewEventForm({addEvent}) {
                 <span>Event name:</span>
                 <input
                     type="text"
+                    // ref={title}
                     onChange={(e) => {setEventName(e.target.value)}}
                     value={eventName}
                 />
@@ -49,10 +63,20 @@ export default function NewEventForm({addEvent}) {
             <label>
                 <span>Event date:</span>
                 <input 
-                    type="date" 
+                    type="date"
+                    // ref={date}
                     onChange={(e) => {setEventDate(e.target.value)}}
                     value={eventDate}
                 />
+            </label>
+
+            <label>
+                <span>Event location:</span>
+                <select onChange={(e) => {setLocation(e.target.value)}}>
+                    <option value="london">London</option>
+                    <option value="new york">New York</option>
+                    <option value="paris">Paris</option>
+                </select>
             </label>
 
             <p>Summary:</p>
