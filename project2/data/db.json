@@ -1,0 +1,34 @@
+{
+    "trips": [
+        {
+            "title": "1",
+            "price": "$19",
+            "loc": "europe",
+            "id": 1
+        },
+        {
+            "title": "asjoh",
+            "price": "$24",
+            "loc": "america",
+            "id": 2
+        },
+        {
+            "title": "another trip",
+            "price": "$90",
+            "loc": "asia",
+            "id": 3
+        },
+        {
+            "title": "tripster!",
+            "price": "$45",
+            "loc": "asia",
+            "id": 4
+        },
+        {
+            "title": "tripago!",
+            "price": "$419",
+            "loc": "europe",
+            "id": 5
+        }
+    ]
+}

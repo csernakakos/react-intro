@@ -1,0 +1,33 @@
+.trip-list {
+    width: 480px;
+    margin: 60px auto;
+}
+
+.trip-list ul {
+    padding: 0;
+}
+
+.trip-list li {
+    background: paleturquoise;
+    border: 5px solid rgb(102, 216, 216);
+    box-sizing: border-box;
+    padding: 10px;
+    /* box-shadow: 4px 4px 6px rgba(0,0,0,0.5); */
+    border-radius: 4px;
+    list-style-type: none;
+    margin: 20px 0;
+}
+
+.trip-list .filters {
+    display: flex;
+    gap: 10px;
+}
+
+.trip-list button {
+    background: palegreen;
+    border: 5px solid rgb(100, 195, 100);
+    cursor: pointer;
+    padding: 10px;
+    font-size: 20px;
+    flex-grow: 1;
+}
