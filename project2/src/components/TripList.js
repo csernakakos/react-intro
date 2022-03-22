@@ -1,15 +1,23 @@
 import "./TripList.css";
-import "../hooks/UseFetch";
+import "../hooks/useFetch";
 import { useState } from "react";
-import { useFetch } from "../hooks/UseFetch";
+import { useFetch } from "../hooks/useFetch";
 
 export default function TripList() {
-    const [url, setUrl] = useState("http://localhost:3002/trips")
-    const { data: trips } = useFetch(url);
+    const [url, setUrl] = useState("http://localhost:3002/trips");
+
+     // useRef to pass objects:
+    const myObject = {isObject: true};
+
+    const { data: trips, isPending, error } = useFetch(url, myObject);
 
     return (
         <div className="trip-list">
-            <h2>Trip list:</h2>
+            <h2>Trip list</h2>
+            {/* Error: */}
+            {error && <div>{error}</div>}
+            {/* Loader: */}
+            {isPending && <div>Loading trips...</div>}
             <ul>
                 {trips && trips.map(trip => (
                     <li key={trip.id}>
