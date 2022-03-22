@@ -1,0 +1,29 @@
+.App {
+  max-width: 860px;
+  margin: 4rem auto;
+}
+
+button {
+  background: none;
+  border: 0.2rem solid var(--white);
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  color: var(--white);
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 2rem;
+  transition: all 0.2s;
+
+}
+
+button:hover {
+  background: var(--buttonHover);
+  color: var(--white);
+}
+
+.card-grid {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 2rem;
+}
