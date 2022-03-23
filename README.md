@@ -1,7 +1,12 @@
 # React
 
 ## project4
-project4 introduced `react-router`.
+project4 introduced `react-router`. We used:
+- BrowserRouter, Routes, Route
+- NavLink for hyperlinks
+- Route parameters, for example `:/id`
+- Catch all non-existing routes and redirect user
+- Get query string parameters
 
 ## project3
 project3 is a memory game, practicing what we've learned so far.

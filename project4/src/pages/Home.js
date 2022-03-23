@@ -17,8 +17,6 @@ export default function Home() {
                     <h3>{article.title}</h3>
                     <p>{article.author}</p>
                     <NavLink to={`/articles/${article.id}`}>Read more</NavLink>
-                        
-
                 </div>
             ))}
 
