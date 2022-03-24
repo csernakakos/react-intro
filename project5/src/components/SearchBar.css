@@ -1,0 +1,10 @@
+.search-bar form {
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    margin-left: 10px;
+}
+

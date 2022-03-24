@@ -1,18 +1,37 @@
-import {useState, useRef} from "react";
+import {useState, useRef, useEffect} from "react";
+import { useFetch } from "../../hooks/useFetch";
+import {useNavigate} from "react-router-dom";
 import "./Create.css"
 
 export default function Create() {
     const [title, setTitle] = useState("");
-    const [method, setMethod] = useState("");
+    const [methods, setMethods] = useState("");
     const [cookingTime, setCookingTime] = useState("");
     const [newIngredient, setNewIngredient] = useState("");
     const [ingredients, setIngredients] = useState([]);
     const ingredientInput = useRef(null);
 
+    const navigate = useNavigate();
+
+    const {postData, data, error } = useFetch("http://localhost:3002/recipes", "POST");
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(title, method, cookingTime)
+        postData({
+            title,
+            ingredients,
+            methods,
+            cookingTime: cookingTime + " minutes",
+
+        });
     }
+
+    useEffect(() => {
+        if (data) {
+            navigate({pathname: "/"});
+        }
+    }, [data])
+    
 
     const handleAdd = (e) => {
         e.preventDefault();
@@ -67,10 +86,10 @@ export default function Create() {
                 {/* INGREDIENTS */}
 
                 <label>
-                    <span>Recipe method</span>
+                    <span>Recipe methods</span>
                     <textarea
-                        onChange={(e) => {setMethod(e.target.value)}}
-                        value={method}
+                        onChange={(e) => {setMethods(e.target.value)}}
+                        value={methods}
                         required
                     />
                 </label>

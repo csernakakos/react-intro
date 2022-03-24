@@ -1,41 +1,31 @@
 import {useState, useEffect, useRef } from "react";
 
 
-export const useFetch = (url, myObject) => {
+export const useFetch = (url, method = "GET") => {
     const [data, setData] = useState(null);
-    // Loader:
     const [isPending, setIsPending] = useState(false);
-    // Error:
     const [error, setError] = useState(null);
 
-    // useRef to pass objects:
-    const myPassedObject = useRef(myObject).current;
+    const [options, setOptions] = useState(null);
+
+    const postData = (postData) => {
+        setOptions({
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(postData),
+        });
+    }
 
     useEffect(() => {
-
-         // useRef to pass objects:
-        console.log(myPassedObject);
-
-        // Cleanup:
         const controller = new AbortController();
 
-        const fetchData = async () => {
-            // Loader:
+        const fetchData = async (fetchOptions) => {
             setIsPending(true);
 
             try {
-                const response = await fetch(url, 
-                    // Cleanup:
-                    {
-                    signal: controller.signal,
-                    }
-                );
+                const response = await fetch(url, {...fetchOptions, signal: controller.signal});
 
-                if (!response.ok) {
-                    throw new Error(response.statusText);
-                    // If error is thrown, try{} stops right here and skips to catch(){}
-                    // abort error will also be caught in catch(){}
-                }
+                if (!response.ok) throw new Error(response.statusText);
 
                 const json = await response.json();
                 setIsPending(false);
@@ -53,13 +43,18 @@ export const useFetch = (url, myObject) => {
             }
         }
 
-        fetchData();
+        if (method === "GET") {
+            fetchData();
+        }
 
-        // Cleanup:
+        if (method === "POST" && options) {
+            fetchData(options);
+        }
+
         return () => {
             controller.abort();
         }
-    }, [url, myPassedObject])
+    }, [url, method, options])
 
-    return { data, isPending, error };
+    return { data, isPending, error, postData };
 }
