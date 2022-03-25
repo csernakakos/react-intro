@@ -14,3 +14,13 @@
     cursor: pointer;
     margin-left: 15px;
 }
+
+.mode-toggle {
+    margin-right: auto;
+}
+
+.mode-toggle img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}

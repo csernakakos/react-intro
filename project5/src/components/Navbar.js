@@ -11,7 +11,7 @@ export default function Navbar() {
         <div className="navbar" style={{background: color}}>
             <nav>
                 <NavLink to="/" className="brand">
-                    <h1>Cooking Ninja</h1>
+                    <h1>React reducer</h1>
                 </NavLink>
                 <SearchBar />
                 <NavLink to="/create">Create Recipe</NavLink>
