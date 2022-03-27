@@ -1,7 +1,7 @@
 import styles from "./Login.module.css";
 import { useState } from "react";
 
-export default function Login() {
+export default function Login({UIstring}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -16,6 +16,7 @@ export default function Login() {
             className={styles["login-form"]}
             onSubmit={handleSubmit}
         >
+            <h2>{UIstring}</h2>
             {/* EMAIL */}
             <label>
                 <span>Email:</span>
@@ -25,7 +26,7 @@ export default function Login() {
                     value={email}
                 />
             </label>
-            
+
             {/* PASSWORD */}
             <label>
                 <span>Password:</span>
@@ -36,7 +37,7 @@ export default function Login() {
                 />
             </label>
 
-            <button className="btn">Log in</button>
+            <button className="btn">{UIstring}</button>
         </form>
     )
 }

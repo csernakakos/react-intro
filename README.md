@@ -3,7 +3,7 @@
 ## project6
 project6 is a MoneyTracker app. We used:
 - Routers for `/`, `/login/`, `/signup`
-- Login form with `useState`
+- Login form and signup form with `useState`
 - Navbar with `<NavLink>`
 - Firebase authentication
 - More React custom hooks
