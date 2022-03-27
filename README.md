@@ -1,5 +1,17 @@
 # React
 
+## project6
+project6 is a MoneyTracker app. We used:
+- Routers for `/`, `/login/`, `/signup`
+- Login form with `useState`
+- Navbar with `<NavLink>`
+- Firebase authentication
+- More React custom hooks
+
+## project5
+project5 is a Recipe collector app. We used:
+- Firebase database
+
 ## project4
 project4 introduced `react-router`. We used:
 - BrowserRouter, Routes, Route
