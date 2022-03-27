@@ -1,5 +1,5 @@
 import {useState, useRef, useEffect} from "react";
-import { useFetch } from "../../hooks/useFetch";
+import { projectFirestore } from "../../firebase/config";
 import {useNavigate} from "react-router-dom";
 import "./Create.css"
 
@@ -13,24 +13,23 @@ export default function Create() {
 
     const navigate = useNavigate();
 
-    const {postData, data, error } = useFetch("http://localhost:3002/recipes", "POST");
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        postData({
+        const doc = {
             title,
             ingredients,
             methods,
             cookingTime: cookingTime + " minutes",
 
-        });
-    }
+        };
 
-    useEffect(() => {
-        if (data) {
+        try {
+            await projectFirestore.collection("recipes").add(doc);
             navigate({pathname: "/"});
+        } catch (error) {
+            console.log(error);
         }
-    }, [data])
+    }
     
 
     const handleAdd = (e) => {
