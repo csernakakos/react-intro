@@ -1,40 +1,40 @@
-import { useState, useEffect } from "react";
-import { projectAuth } from "../firebase/config";
-import { useAuthContext } from "./useAuthContext";
+import { useState, useEffect } from 'react'
+import { projectAuth } from '../firebase/config'
+import { useAuthContext } from './useAuthContext'
 
 export const useLogin = () => {
-    const [isCancelled, setIsCancelled] = useState(false);
-    const [error, setError] = useState(null);
-    const [isPending, setIsPending] = useState(false);
-    const { dispatch } = useAuthContext();
+  const [isCancelled, setIsCancelled] = useState(false)
+  const [error, setError] = useState(null)
+  const [isPending, setIsPending] = useState(false)
+  const { dispatch } = useAuthContext()
 
-    const login = async (email, password) => {
-        setError(null);
-        setIsPending(true);
-
+  const login = async (email, password) => {
+    setError(null)
+    setIsPending(true)
+  
     try {
-        const response = await projectAuth.signInWithEmailAndPassword(email, password);
+      // login
+      const res = await projectAuth.signInWithEmailAndPassword(email, password)
 
-        dispatch({type: "LOGIN", payload: response.user });
+      // dispatch login action
+      dispatch({ type: 'LOGIN', payload: res.user })
 
-        if (!isCancelled) {
-            setIsPending(false);
-            setError(null);
-        }
-
-    } catch (error) {
-        if (!isCancelled) {
-            console.log(error.message);
-            setError(error.message);
-            setIsPending(false);
-        }
+      if (!isCancelled) {
+        setIsPending(false)
+        setError(null)
+      }
+    } 
+    catch(err) {
+      if (!isCancelled) {
+        setError(err.message)
+        setIsPending(false)
+      }
     }
+  }
 
-    }
+  useEffect(() => {
+    return () => setIsCancelled(true)
+  }, [])
 
-    // return cleanup function using useEffect()
-    useEffect(() => {
-        return () => setIsCancelled(true);
-    }, []);
-    return { login, error, isPending }
+  return { login, isPending, error }
 }
