@@ -11,9 +11,6 @@ import Sidebar from "./components/Sidebar";
 
 import {useAuthContext} from "./hooks/useAuthContext";
 
-
-
-
 function App() {
 
   const { user, authIsReady} = useAuthContext();
@@ -22,7 +19,9 @@ function App() {
     <div className="App">
       {authIsReady && (
           <BrowserRouter>
-          <Sidebar />
+          {user && (
+              <Sidebar />
+          )}        
             <div className="container">
               <Navbar />
               <Routes>
